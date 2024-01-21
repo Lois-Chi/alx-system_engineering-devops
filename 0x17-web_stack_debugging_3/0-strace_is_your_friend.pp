@@ -1,4 +1,4 @@
-exec { 'Fix typo in filename':
-  command  => 'sudo sed -i "s/.phpp/.php/" /var/www/html/wp-settings.php',
-  provider => shell,
+exec { 'fix-wordpress':
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php; sudo service apache2 restart',
+  path    => ['/bin', '/usr/bin', '/usr/sbin']
 }
